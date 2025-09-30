@@ -1,3 +1,6 @@
+//Leetcode 242
+//Valid Anagram
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -10,8 +13,6 @@ bool solve(string s, string t){
 
     for(int i=0; i<n; i++){
         arr[s[i]-'a']++;
-    }
-    for(int i=0; i<n; i++){
         arr[t[i]-'a']--;
     }
 
