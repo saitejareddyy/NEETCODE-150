@@ -4,7 +4,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int solve(vector<int> nums){
+int method2(vector<int> nums){
     // unordered set approach 
     int n = nums.size();
     if(n == 0) return 0;
@@ -30,6 +30,28 @@ int solve(vector<int> nums){
     //  S.C = O(N)
 }
 
+int method1(vector<int> nums){
+    // using sorting
+    int n = nums.size();
+    if(n == 0) return 0;
+
+    sort(nums.begin(), nums.end());
+
+    int maxi = 0, count = 1;
+
+    for(int i=1; i<n; i++){
+        if(nums[i] == nums[i-1] + 1){
+            count++;
+            maxi = max(maxi, count);
+        } else {
+            count = 1;
+        }
+    }
+    return maxi;
+    // T.C = O(NlogN) 
+    // S.C = O(N) for sorting 
+}
+
 int main(){
     int n;
     cout<<"Enter the size of an array";
@@ -37,7 +59,8 @@ int main(){
     vector<int> nums(n);
     cout<<"Enter the nums sequence";
     for(int i=0; i<n; i++) cin>>nums[i];
-    int result = solve(nums);
+    // int result = method2(nums);
+    int result = method1(nums);
     cout<<"Output: Longest Consecutive Sequence is "<<result<<endl;
     return 0;
 }
